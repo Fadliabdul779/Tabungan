@@ -1,9 +1,7 @@
-import { defineConfig } from 'vite'
-
-export default defineConfig({
-  root: '.',
-  server: {
-    host: true,
-    port: 3000
-  }
-})
+{
+  "rewrites": [
+    { "source": "/admin.html", "destination": "/admin.html" },
+    { "source": "/staff.html", "destination": "/staff.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
