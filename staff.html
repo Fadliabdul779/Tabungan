@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff - Tabungan Santri PPM Zaenab Masykur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <i class="fas fa-wallet"></i>
+            <span>Tabungan Santri</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li onclick="showSection('dashboard')" class="active" data-section="dashboard">
+                <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+            </li>
+            <li onclick="showSection('view-students')" data-section="view-students">
+                <i class="fas fa-users"></i> <span>Lihat Santri</span>
+            </li>
+            <li onclick="showSection('manage-transactions')" data-section="manage-transactions">
+                <i class="fas fa-exchange-alt"></i> <span>Transaksi</span>
+            </li>
+            <li onclick="showSection('my-transactions')" data-section="my-transactions">
+                <i class="fas fa-history"></i> <span>Riwayat Saya</span>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>Staff</span>
+            </div>
+            <button onclick="logout()" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <h1><i class="fas fa-user-tie"></i> Staff Panel</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pencarian...">
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+        <main id="main-content">
+            <section id="dashboard" class="section active">
+                <div class="page-header">
+                    <h2><i class="fas fa-home"></i> Dashboard</h2>
+                    <p class="date-display" id="current-date"></p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card blue">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <h4>Total Santri</h4>
+                            <p class="stat-value" id="total-students">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="stat-icon"><i class="fas fa-money-check-alt"></i></div>
+                        <div class="stat-info">
+                            <h4>Total Saldo</h4>
+                            <p class="stat-value" id="total-balance">Rp0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="stat-icon"><i class="fas fa-calday-alt"></i></div>
+                        <div class="stat-info">
+                            <h4>Transaksi Hari Ini</h4>
+                            <p class="stat-value" id="today-transactions">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bolt"></i> Aksi Cepat</h3>
+                        </div>
+                        <div class="card-body">
+                            <button class="action-btn primary" onclick="showSection('manage-transactions')">
+                                <i class="fas fa-plus-circle"></i> Transaksi Baru
+                            </button>
+                            <button class="action-btn" onclick="showSection('view-students')">
+                                <i class="fas fa-search"></i> Cek Saldo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="view-students" class="section">
+                <div class="page-header">
+                    <h2><i class="fas fa-users"></i> Daftar Santri</h2>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Semua Santri</h3>
+                        <input type="text" id="search-student" placeholder="Cari nama..." class="search-input">
+                    </div>
+                    <div class="card-body">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-list"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section id="manage-transactions" class="section">
+                <div class="page-header">
+                    <h2><i class="fas fa-exchange-alt"></i> Transaksi</h2>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Transaksi Baru</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="transaction-form" class="form-grid">
+                            <div class="form-group">
+                                <label>Pilih Santri</label>
+                                <select id="student-select" required>
+                                    <option value="">-- Pilih Santri --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Jenis Transaksi</label>
+                                <select id="type">
+                                    <option value="deposit">💰 Setor (Masuk)</option>
+                                    <option value="withdraw">💸 Tarik (Keluar)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Jumlah (Rp)</label>
+                                <input type="number" id="amount" placeholder="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn-primary btn-block"><i class="fas fa-check"></i> Proses</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section id="my-transactions" class="section">
+                <div class="page-header">
+                    <h2><i class="fas fa-history"></i> Riwayat Transaksi</h2>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Transaksi Saya</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal</th>
+                                    <th>Nama Santri</th>
+                                    <th>Jenis</th>
+                                    <th>Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transaction-list"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>

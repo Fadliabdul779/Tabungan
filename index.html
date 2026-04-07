@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Tabungan Santri PPM Zaenab Masykur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="landing-page">
+    <div class="landing-container">
+        <header class="landing-header">
+            <div class="logo-section">
+                <div class="logo-icon"><i class="fas fa-wallet"></i></div>
+                <div class="logo-text">
+                    <h1>Tabungan Santri</h1>
+                    <p>PPM Zaenab Masykur</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-login" onclick="showLogin('staff')"><i class="fas fa-sign-in-alt"></i> Login Staff</button>
+                <button class="btn-login admin" onclick="showLogin('admin')"><i class="fas fa-user-shield"></i> Login Admin</button>
+            </div>
+        </header>
+
+        <main class="landing-main">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h2>Kelola Tabungan Santri dengan Mudah</h2>
+                    <p>Sistem pengelolaan tabungan terintegrasi untuk pondok pesanmodern Zaenab Masykur. Aman, cepat, dan transparan.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="stat-number" id="total-students">0</span>
+                            <span class="stat-label">Santri</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="stat-number" id="total-balance">Rp0</span>
+                            <span class="stat-label">Total Saldo</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="stat-number" id="today-transactions">0</span>
+                            <span class="stat-label">Transaksi Hari Ini</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-graphic">
+                    <div class="graphic-card"><i class="fas fa-graduation-cap"></i></div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card stat-card-landing blue">
+                    <div class="stat-icon-landing"><i class="fas fa-users"></i></div>
+                    <div class="stat-info-landing">
+                        <h4>Total Santri</h4>
+                        <p class="stat-value-landing" id="total-students-card">0</p>
+                        <span class="stat-sub">Santri aktif</span>
+                    </div>
+                </div>
+                <div class="card stat-card-landing green">
+                    <div class="stat-icon-landing"><i class="fas fa-money-check-alt"></i></div>
+                    <div class="stat-info-landing">
+                        <h4>Total Saldo</h4>
+                        <p class="stat-value-landing" id="total-balance-card">Rp0</p>
+                        <span class="stat-sub">Tabungan terkumpul</span>
+                    </div>
+                </div>
+                <div class="card stat-card-landing orange">
+                    <div class="stat-icon-landing"><i class="fas fa-calendar-day"></i></div>
+                    <div class="stat-info-landing">
+                        <h4>Transaksi Hari Ini</h4>
+                        <p class="stat-value-landing" id="today-transactions-card">0</p>
+                        <span class="stat-sub">Transaksi</span>
+                    </div>
+                </div>
+                <div class="card stat-card-landing purple">
+                    <div class="stat-icon-landing"><i class="fas fa-user-friends"></i></div>
+                    <div class="stat-info-landing">
+                        <h4>Staff Aktif</h4>
+                        <p class="stat-value-landing" id="total-staff-card">0</p>
+                        <span class="stat-sub">Petugas aktif</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h3><i class="fas fa-star"></i> Fitur Utama Aplikasi</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-user-plus"></i></div>
+                        <h4>Kelola Santri</h4>
+                        <p>Data lengkap siswa dengan NIS, kelas, dan informasi orang tua</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
+                        <h4>Transaksi Tabungan</h4>
+                        <p>Setor dan tarik dengan validasi saldo real-time</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+                        <h4>Laporan Lengkap</h4>
+                        <p>Export data dan laporan periode tertentu</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Keamanan Terjamin</h4>
+                        <p>Akses terpisah Admin dan Staff dengan approval</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="register-section">
+                <div class="register-card">
+                    <div class="register-content">
+                        <h3><i class="fas fa-user-plus"></i> Daftar Jadi Staff</h3>
+                        <p>Bergabung dengan tim kami untuk mengelola tabungan santri. Setiap pendaftaran memerlukan persetujuan admin.</p>
+                        <button class="btn-primary" onclick="showRegisterStaff()"><i class="fas fa-paper-plane"></i> Daftar Sekarang</button>
+                    </div>
+                    <div class="register-graphic"><i class="fas fa-handshake"></i></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="landing-footer">
+            <div class="footer-content">
+                <p><i class="fas fa-code"></i> Dibuat oleh <strong>Fadli Private</strong></p>
+                <p>Aplikasi Tabungan Santri PPM Zaenab Masykur</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="register-staff-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegisterStaff()">&times;</span>
+            <div class="modal-header-center">
+                <h2><i class="fas fa-user-plus"></i> Daftar Staff Baru</h2>
+                <p>Isi data di bawah untuk mengajukan akses</p>
+            </div>
+            <form id="register-staff-form">
+                <div class="form-group">
+                    <label for="reg-username"><i class="fas fa-at"></i> Username</label>
+                    <input type="text" id="reg-username" placeholder="Masukkan username" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="reg-password" placeholder="Masukkan password" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-name"><i class="fas fa-user"></i> Nama Lengkap</label>
+                    <input type="text" id="reg-name" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <button type="submit" class="btn-primary btn-block"><i class="fas fa-paper-plane"></i> Kirim Pengajuan</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <div class="modal-header-center">
+                <h2 id="login-title"><i class="fas fa-sign-in-alt"></i> Login</h2>
+                <p>Masukkan credentials untuk akses</p>
+            </div>
+            <form id="login-form">
+                <input type="hidden" id="login-role" value="staff">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-at"></i> Username</label>
+                    <input type="text" id="username" placeholder="Masukkan username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" placeholder="Masukkan password" required>
+                </div>
+                <button type="submit" class="btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+// Konfigurasi Supabase
+const SUPABASE_URL = 'https://urhtraluxfdbpakpoqai.supabase.co'
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyaHRyYWx1eGZkYnBha3BvcWFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MDcyNTAsImV4cCI6MjA5MTA4MzI1MH0.bfysO88WKo-Lze55NGIy8JdBFIqRswht_rAxr2HBaO4'
+
+export { SUPABASE_URL, SUPABASE_KEY }
