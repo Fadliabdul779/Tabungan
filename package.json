@@ -8,7 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0"
+    "@neondatabase/serverless": "^1.0.2",
+    "@supabase/supabase-js": "^2.39.0",
+    "bcryptjs": "^3.0.3"
   },
   "devDependencies": {
     "vite": "^5.0.0"
