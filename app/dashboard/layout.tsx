@@ -6,16 +6,16 @@ import { AuthProvider, useAuth } from "@/components/auth-provider"
 import { Sidebar } from "@/components/sidebar"
 
 function DashboardContent({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth()
+  const { user, isLoading } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!isLoading && !user) {
       router.push("/")
     }
-  }, [user, loading, router])
+  }, [user, isLoading, router])
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
